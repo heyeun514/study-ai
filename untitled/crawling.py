@@ -25,11 +25,73 @@ parser.add_argument("-name", required=True)
 # parser.add_argument("keyword", help="the keyword to search")
 #  명령행 옵션을 지정하기 위해 사용합니다 명령행 옵션 인자는 -name으로 지정
 
-args = parser.parse_args()
+# args = parser.parse_args()
 #parse에 add_argument()함수 사용해 args 인스턴스생성
 
 # people = args.people
 # 명령행에서 받은 인자값을 people에 값을 넘겨줌
+
+fish_list = (('꼼치','Tanaka snaifish',' Grassfish'),
+('빨간양태','Red flathead','Bembras japonicus Cuvier'),
+('까지양태','Spotted flathead','Cociella crocodila'),
+('비늘양태','Devil flathead','Onigocia spinosa'),
+('양태',' Bartail flathead','Platycephalus indicus'),
+('홍감펭','Rosefish','Helicolenus hilgendorfi'),
+('쏠배감펭','Butterfly fish','Pterois lunulata Temminck et Schlegel'),
+('점감펭','Fire fish','Scorpaena neglecta neglecta Temminck et Schlegel'),
+('볼락','Rock fish','Sebastes inermis Cuvier'),
+('개볼락','Spotbelly rockfish','Sebastes pachycephalus pachycephalus Temminck et Schlegel'),
+('조피볼락','Jacopever','Sebastes pachycephalus pachycephalus Temminck et Schlegel'),
+('불볼락','Goldeye rockfish','Sebastes thompsoni '),
+('우럭볼락','Armorclad rockfish','Sebastes hubbsi'),
+('붉감펭','Yellowbarred red rockfish','Sebastiscus albofasciatus'),
+('쏨뱅이','Scorpion fish','Sebastiscus marmoratus'),
+('쑤기미','Devil stinger','Inimicus japonicus'),
+('성대','Bluefin searobin','Chelidonichthys spinosus'),
+('쌍뿔달재','Forksnout searobin','Lepidotrigla alata'),
+('꼬마달재','Redbanded searobin','Lepidotrigla guentheri Hilgendorf'),
+('가시달갱이','Longwing searobin','Lepidotrigla japonica'),
+('달강어','Red guruard','Lepidotrigla microptera Gunther'),
+('밑달갱이','Abyssal searobin','Lepidotrigla abysalis Jordan et Starks'),
+('밑성대','Spottyback searobin','Pterygotrigla hemisticta'),
+('꽁지양태','Japanese dragonet','Callionymus japonicus Houttuyn'),
+('도화양태','Red dragonet','Callionymus japonicus Houttuyn'),
+('풀넙치','Lyre flatfish','Citharoides macrolepidotus Hubbs'),
+('넙치','Bastard','Paralichyhus olivaceus'),
+('별넙치','Cinnamon flounder','Pseudorhombus cinnamoneus'),
+('용가자미','Pointhead flounder','Cleisthenes pinetorum herzensteini'),
+('줄가자미','Roughscale sole','Clidoderma asperrimum'),
+('눈가자미','Rikuzen sole','Dexistes rikuzenius Jordan et Starks'),
+('물가자미','Shotted halibut','Eopsetta grigorjewi'),
+('기름가자미','Korean flounder','Glyptocephalus stelleri'),
+('돌가자미','Stone flounder','Kareius bicoloratus '),
+('참가자미','Flounder','Limanda herzensteini Jordan et Snyder'),
+('층거리가자미','sand flounder','Limanda punctatissima'),
+('문치가자미','Marbled sole','Limanda yokohamae'),
+('찰가자미','Slime flounder','Microstomus achne'),
+('도다리','Finespotted flounder','Pleuronichthys cornutus'),
+('갈가자미','Willowy flounder','Tanakius kitaharai'),
+('범가자미','Spotted halibut','Verasper variegatus'),
+('참서대','Red tongue sole','Cynoglossus joyneri Gunther'),
+('개서대','Robust tonguefish','Cynoglossus robustus Gunther'),
+('흑대기','Black tonguefish','Paraplagusia japonica'),
+('노랑각시서대','Many-banded sole','Zebrias fasciatus'),
+('객주리','Unicorn filefish','Aluterus monoceros'),
+('날개쥐치','Figured leathe rjacket','Aluterus scriptus'),
+('말쥐치','Black scraper','Navodon modestus'),
+('쥐치','File fish','Stephanolepis cirrhifer'),
+('거북복','Black spotted boxfish','Ostracion cubicus Linnaeus'),
+('가시복','Porcupine fish','Diodon holocanthus Linnaeus'),
+('개복치','Head fish','Mola mola'),
+('은밀복','Blowfish','Lagocephalus wheeleri Abe'),
+('흑밀복','Brown-backed toadfish','Lagocephalus golveri Abe et Tabeta'),
+('복섬','Grass puffer','Takifugu niphobles'),
+('졸복','Panther puffer','Takifugu pardalis'),
+('흰점복','Finepatterned pufferb','Takifugu poecilonotus'),
+('검복','Globe fish','Takifugu porphyreus'),
+('검자주복','Eyespot puffer','Takifugu pseudommus'),
+('자주복','Tiger puffer','Takifugu rubripes'),
+('까치복','Striped puffer','Takifugu xanthopterus'))
 
 def download_image(link):
     global no
@@ -46,7 +108,7 @@ def download_image(link):
     title = fromstring(r.content).findtext(".//title")
     link = title.split(" ")[-1]
     # print("At : " + os.getcwd() + ", Downloading from " + link)
-    print("@@@@@@@")
+
 
     # try:
         
@@ -96,27 +158,37 @@ def search(url):
 def main():
 
     # 사용한 구글 url https://www.google.co.kr/search?q=%EB%B2%A4&tbm=isch
-    print(args)
-    query = args.name
+    # print(args)
+    # query = args.name
     # url_info = "https://www.google.co.kr/search?"
-    url_info = "https://www.google.com/search?as_st=y&tbm=isch&as_q=" + query + \
-              "&as_epq=&as_oq=&as_eq=&cr=&as_sitesearch=&safe=images&tbs=isz:lt,islt:svga,itp:photo,ift:jpg"
+    print(os.path.dirname(__file__))
 
-    source = search(url_info)
+    for fish in fish_list:
+        global no
+        no = 0
+        query = fish[0] + ' ' + fish[2]
+        url_info = "https://www.google.com/search?as_st=y&tbm=isch&as_q=" + query + \
+                  "&as_epq=&as_oq=&as_eq=&cr=&as_sitesearch=&safe=images&tbs=isz:lt,islt:svga,itp:photo,ift:jpg"
 
-    if not(os.path.isdir(query)):
-        os.makedirs(os.path.join(query))
+        source = search(url_info)
+        print("dir name : " + fish[2])
 
-    os.chdir(os.getcwd() + "/" + query)
+        if not(os.path.isdir(fish[2])):
+            os.makedirs(os.path.join(fish[2]))
 
-    bsObject = BeautifulSoup(source, "html.parser")
-    links = bsObject.find_all("a", class_="rg_l")
+            os.chdir(os.getcwd() + "/" + fish[2])
 
-    for a in links[0:5]:
-        try:
-            download_image(a)
-        except:
-            pass
+            bsObject = BeautifulSoup(source, "html.parser")
+            links = bsObject.find_all("a", class_="rg_l")
+
+            for a in links[0:-1]:
+                try:
+                    download_image(a)
+                except:
+                    pass
+            os.chdir("..")
+
+
     # with Pool() as pool:
     #     pool.map(download_image, links)
 
