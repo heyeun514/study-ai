@@ -129,7 +129,7 @@ def download_image(link):
 
 
 def search(url):
-    driver = webdriver.Chrome('/Users/fxd/Downloads/chromedriver')
+    driver = webdriver.Chrome('/Users/parkhyeeun/Downloads')
     
     print(url)
     driver.get(url)
@@ -197,6 +197,10 @@ def main():
     # #url 요청 파싱값
     # html_object = req.get(url_info,params) #html_object html source 값
     # directory = params
+
+
+
+
 
     # if html_object.status_code == 200:
     #     #페이지 status_code 가 200 일때 2XX 는 성공을 이야기함
